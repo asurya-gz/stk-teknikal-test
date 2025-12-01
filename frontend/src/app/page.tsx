@@ -26,7 +26,6 @@ export default function Home() {
   const [addMenuParentId, setAddMenuParentId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isDropZoneActive, setIsDropZoneActive] = useState(false);
 
   useEffect(() => {
     fetchMenus();
@@ -119,35 +118,6 @@ export default function Home() {
     }
   };
 
-  const handleDropToRoot = async (e: React.DragEvent) => {
-    if (e.target !== e.currentTarget) return;
-    e.preventDefault();
-    setIsDropZoneActive(false);
-
-    const draggedMenuId =
-      e.dataTransfer.getData('application/x-menu-id') ||
-      e.dataTransfer.getData('text/plain');
-    if (!draggedMenuId) return;
-
-    try {
-      // Move to root by setting parent to null
-      await moveMenu(draggedMenuId, null);
-    } catch (error) {
-      console.error('Failed to move menu to root:', error);
-    }
-  };
-
-  const handleDragOverRoot = (e: React.DragEvent) => {
-    if (e.target !== e.currentTarget) return;
-    e.preventDefault();
-    setIsDropZoneActive(true);
-  };
-
-  const handleDragLeaveRoot = (e: React.DragEvent) => {
-    if (e.target !== e.currentTarget) return;
-    e.preventDefault();
-    setIsDropZoneActive(false);
-  };
 
   return (
     <div className="flex min-h-screen bg-[#f4f7fb] overflow-hidden">
@@ -284,17 +254,7 @@ export default function Home() {
                     </button>
                   </div>
                 ) : (
-                  <div
-                    className={`space-y-4 min-h-[200px] ${isDropZoneActive ? 'bg-blue-50 border-2 border-dashed border-blue-400 rounded-2xl p-4' : ''}`}
-                    onDrop={handleDropToRoot}
-                    onDragOver={handleDragOverRoot}
-                    onDragLeave={handleDragLeaveRoot}
-                  >
-                    {isDropZoneActive && (
-                      <div className="text-center py-8 text-blue-600 font-medium">
-                        Drop here to make this a root menu
-                      </div>
-                    )}
+                  <div className="space-y-4">
                     {filteredMenus.map((menu) => (
                       <MenuTreeItem
                         key={menu.id}
