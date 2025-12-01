@@ -27,12 +27,15 @@ A fullstack hierarchical menu management system with unlimited depth support, bu
 - Clean and intuitive interface
 
 ### Bonus Features
+- **Drag-and-drop** functionality for menu restructuring
 - Docker & Docker Compose setup
 - Development and production modes
 - Hot-reloading in development
 - Optimized multi-stage builds
 - Environment variable management
 - Database persistence with volumes
+- Collapsible sidebar with mobile responsiveness
+- Advanced search with autocomplete suggestions
 
 ## Tech Stack
 
@@ -106,8 +109,8 @@ A fullstack hierarchical menu management system with unlimited depth support, bu
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd menu-tree-system
+git clone https://github.com/asurya-gz/stk-teknikal-test.git
+cd stk-teknikal-test
 ```
 
 2. **Run with Docker Compose (Development)**
@@ -277,12 +280,12 @@ curl -X PATCH http://localhost:3001/api/menus/1/move \
 
 ```sql
 CREATE TABLE menus (
-  id SERIAL PRIMARY KEY,
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(255) NOT NULL,
   url VARCHAR(500),
   icon VARCHAR(100),
   "order" INTEGER DEFAULT 0,
-  "parentId" INTEGER REFERENCES menus(id) ON DELETE CASCADE,
+  "parentId" UUID REFERENCES menus(id) ON DELETE CASCADE,
   depth INTEGER DEFAULT 0,
   "createdAt" TIMESTAMP DEFAULT NOW(),
   "updatedAt" TIMESTAMP DEFAULT NOW()
@@ -411,14 +414,23 @@ docker-compose up --build
 
 MIT
 
-## Author
+## Repository
 
-Created for Solusi Teknologi Kreatif Technical Test
+GitHub: https://github.com/asurya-gz/stk-teknikal-test
 
-## Demo
+## Submission
 
-[Add screenshots or video demo here]
+This project is created as part of the Solusi Teknologi Kreatif (STK) technical test.
+
+For detailed submission information, see [SUBMISSION.md](SUBMISSION.md)
 
 ---
 
-For more information or support, please contact the development team.
+**Note**: This project demonstrates fullstack development skills including:
+- Clean architecture and best practices
+- TypeScript for type safety
+- RESTful API design
+- Modern React patterns
+- Docker containerization
+- Database design and optimization
+- Responsive UI/UX design

@@ -49,15 +49,18 @@ This is a complete fullstack application implementing a hierarchical menu tree s
 - [x] UI matching Figma design
 
 ### Bonus Features ✅
+- [x] Drag-and-drop functionality for restructuring menu items
 - [x] Docker & Docker Compose setup
 - [x] Development mode with hot-reloading
 - [x] Production mode with optimized builds
 - [x] Multi-stage Docker builds
 - [x] Environment variable management
-- [x] Move menu items between parents
-- [x] Reorder menu items within same level
+- [x] Move menu items between parents (API endpoint)
+- [x] Reorder menu items within same level (API endpoint)
 - [x] State management with Zustand
 - [x] Database persistence with Docker volumes
+- [x] Collapsible sidebar with mobile responsiveness
+- [x] Advanced search with autocomplete suggestions
 
 ## Quick Start
 
@@ -65,8 +68,8 @@ This is a complete fullstack application implementing a hierarchical menu tree s
 
 ```bash
 # Clone repository
-git clone <repository-url>
-cd menu-tree-system
+git clone https://github.com/asurya-gz/stk-teknikal-test.git
+cd stk-teknikal-test
 
 # Start all services
 docker-compose up
@@ -200,12 +203,17 @@ menu-tree-system/
 
 ## Repository
 
-GitHub Repository: [Add your repository link here]
+GitHub Repository: https://github.com/asurya-gz/stk-teknikal-test
 
-## Contact
+## Additional Features
 
-For any questions or clarifications, please contact:
-[Your contact information]
+Beyond the requirements, the following enhancements have been added:
+- **Optimized UI/UX**: Smooth animations and transitions
+- **Advanced Tree Navigation**: Breadcrumb-style connection lines
+- **Smart Search**: Real-time filtering with autocomplete suggestions
+- **Mobile-First Design**: Fully responsive with collapsible sidebar
+- **Error Recovery**: User-friendly error messages and retry mechanisms
+- **Performance**: Optimized rendering for large menu trees
 
 ---
 
